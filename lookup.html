@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lookup</title>
+
+<style>
+body { font-family: Arial; padding:20px; background:#f1f5f9; }
+
+input, button {
+  padding:10px;
+  width:100%;
+}
+
+.result {
+  margin-top:20px;
+  background:white;
+  padding:15px;
+  border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Order Lookup</h2>
+
+<input id="search" placeholder="Enter Order ID">
+<button onclick="search()">Search</button>
+
+<div id="result"></div>
+
+<script>
+function search() {
+  let val = document.getElementById("search").value;
+
+  let data = JSON.parse(localStorage.getItem("pickupData") || "[]");
+
+  let found = data.find(x => x.order === val);
+
+  if (found) {
+    document.getElementById("result").innerHTML =
+      `<div class="result">
+        Order: ${found.order}<br>
+        Tracking: ${found.track}
+      </div>`;
+  } else {
+    document.getElementById("result").innerHTML = "Not Found";
+  }
+}
+</script>
+
+</body>
+</html>
