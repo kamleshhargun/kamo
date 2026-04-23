@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tracking</title>
+
+<style>
+body { font-family: Arial; background:#f1f5f9; padding:20px; }
+input, select, button { width:100%; padding:10px; margin:5px 0; }
+.card { background:white; padding:20px; border-radius:10px; }
+</style>
+</head>
+
+<body>
+
+<h2>Order Tracking Update</h2>
+
+<div class="card">
+<input id="orderId" placeholder="Order ID">
+
+<select id="status">
+  <option>Pickup</option>
+  <option>Cutting</option>
+  <option>Stitching</option>
+  <option>Finished</option>
+  <option>Delivered</option>
+</select>
+
+<button onclick="update()">Update</button>
+</div>
+
+<script>
+function update() {
+  let order = document.getElementById("orderId").value;
+  let status = document.getElementById("status").value;
+
+  let data = JSON.parse(localStorage.getItem("tracking") || "{}");
+
+  data[order] = status;
+
+  localStorage.setItem("tracking", JSON.stringify(data));
+
+  alert("Updated");
+}
+</script>
+
+</body>
+</html>
