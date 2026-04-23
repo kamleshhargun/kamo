@@ -8,37 +8,7 @@
 body { font-family: Arial; background:#f1f5f9; padding:20px; }
 input, button { width:100%; padding:10px; margin:5px 0; }
 .card { background:white; padding:20px; border-radius:10px; }
-</style>
-</head>
-
-<body>
-
-<h2>Cutting Entry</h2>
-
-<div class="card">
-<input id="orderId" placeholder="Order ID">
-<button onclick="save()">Save</button>
-</div>
-<!-- ===== COMMON HEADER + SIDEBAR START ===== -->
-
-<div class="topbar">ERP System</div>
-
-<div class="sidebar">
-  <a href="index.html">Dashboard</a>
-  <a href="pickup.html">Pickup</a>
-  <a href="return.html">Return</a>
-  <a href="lookup.html">Order Lookup</a>
-  <a href="tracking.html">Tracking</a>
-  <a href="purchase.html">Purchase</a>
-  <a href="cutting.html">Cutting</a>
-  <a href="stitching.html">Stitching</a>
-  <a href="finished.html">Finished</a>
-  <a href="sales.html">Sales</a>
-</div>
-
-<!-- ===== COMMON HEADER + SIDEBAR END ===== -->
-  <style>
-body {
+  body {
   margin: 0;
   font-family: Arial;
   background: #f1f5f9;
@@ -88,7 +58,36 @@ body {
   border-radius: 10px;
   margin-bottom: 15px;
 }
+
 </style>
+</head>
+
+<body>
+
+<h2>Cutting Entry</h2>
+
+<div class="card">
+<input id="orderId" placeholder="Order ID">
+<button onclick="save()">Save</button>
+</div>
+<!-- ===== COMMON HEADER + SIDEBAR START ===== -->
+
+<div class="topbar">ERP System</div>
+
+<div class="sidebar">
+  <a href="index.html">Dashboard</a>
+  <a href="pickup.html">Pickup</a>
+  <a href="return.html">Return</a>
+  <a href="lookup.html">Order Lookup</a>
+  <a href="tracking.html">Tracking</a>
+  <a href="purchase.html">Purchase</a>
+  <a href="cutting.html">Cutting</a>
+  <a href="stitching.html">Stitching</a>
+  <a href="finished.html">Finished</a>
+  <a href="sales.html">Sales</a>
+</div>
+
+<!-- ===== COMMON HEADER + SIDEBAR END ===== -->
 <script>
 function save() {
   let order = document.getElementById("orderId").value;
