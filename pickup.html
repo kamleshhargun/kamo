@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pickup</title>
+
+<style>
+body { font-family: Arial; background:#f1f5f9; padding:20px; }
+
+input, button {
+  padding: 10px;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Pickup Entry</h2>
+
+<div class="card">
+
+<input id="orderId" placeholder="Order ID">
+<input id="trackingId" placeholder="Tracking ID">
+
+<button onclick="save()">Save</button>
+
+</div>
+
+<script>
+function save() {
+  let order = document.getElementById("orderId").value;
+  let track = document.getElementById("trackingId").value;
+
+  if (!order || !track) {
+    alert("Fill all fields");
+    return;
+  }
+
+  let data = JSON.parse(localStorage.getItem("pickupData") || "[]");
+
+  data.push({order, track});
+
+  localStorage.setItem("pickupData", JSON.stringify(data));
+
+  localStorage.setItem("pickup", data.length);
+
+  alert("Saved!");
+
+  document.getElementById("orderId").value = "";
+  document.getElementById("trackingId").value = "";
+}
+</script>
+
+</body>
+</html>
