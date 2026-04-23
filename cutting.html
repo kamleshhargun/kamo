@@ -66,10 +66,6 @@ input, button { width:100%; padding:10px; margin:5px 0; }
 
 <h2>Cutting Entry</h2>
 
-<div class="card">
-<input id="orderId" placeholder="Order ID">
-<button onclick="save()">Save</button>
-</div>
 <!-- ===== COMMON HEADER + SIDEBAR START ===== -->
 
 <div class="topbar">ERP System</div>
@@ -88,7 +84,11 @@ input, button { width:100%; padding:10px; margin:5px 0; }
 </div>
 
 <!-- ===== COMMON HEADER + SIDEBAR END ===== -->
-<script>
+<div class="card">
+<input id="orderId" placeholder="Order ID">
+<button onclick="save()">Save</button>
+</div>
+  <script>
 function save() {
   let order = document.getElementById("orderId").value;
 
