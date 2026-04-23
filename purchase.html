@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purchase</title>
+
+<style>
+body { font-family: Arial; background:#f1f5f9; padding:20px; }
+input, button { width:100%; padding:10px; margin:5px 0; }
+.card { background:white; padding:20px; border-radius:10px; }
+</style>
+</head>
+
+<body>
+
+<h2>Fabric Purchase</h2>
+
+<div class="card">
+<input id="item" placeholder="Fabric Name">
+<input id="qty" placeholder="Quantity">
+<button onclick="save()">Save</button>
+</div>
+
+<script>
+function save() {
+  let item = document.getElementById("item").value;
+  let qty = document.getElementById("qty").value;
+
+  let data = JSON.parse(localStorage.getItem("purchase") || "[]");
+
+  data.push({item, qty});
+
+  localStorage.setItem("purchase", JSON.stringify(data));
+
+  alert("Saved");
+}
+</script>
+
+</body>
+</html>
