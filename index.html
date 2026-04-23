@@ -1,9 +1,228 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <body>kamlesh hargun</body>
-  <body>
-  yaha par apna naam likhna hai
-</body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>nxskin</title>
+
+<style>
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+/* HEADER */
+.header {
+  position: sticky;
+  top: 0;
+  background: black;
+  z-index: 1000;
+}
+
+/* NAVBAR */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+/* LOGO */
+.logo {
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* MENU */
+.menu {
+  list-style: none;
+  display: flex;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu a {
+  color: white;
+  padding: 15px 20px;
+  text-decoration: none;
+  display: block;
+}
+
+/* MEGA MENU */
+.mega-menu {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  background: white;
+
+  display: flex;
+  justify-content: space-around;
+  padding: 30px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: 0.3s;
+}
+
+/* SHOW ON HOVER (DESKTOP) */
+.mega-parent:hover .mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* COLUMNS */
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.column h4 {
+  margin-bottom: 10px;
+}
+
+.column a {
+  color: black;
+  padding: 5px 0;
+}
+
+/* IMAGE COLUMN */
+.image-col img {
+  width: 160px;
+  border-radius: 10px;
+}
+
+/* MOBILE BUTTON */
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  background: none;
+  color: white;
+  border: none;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: black;
+    width: 100%;
+  }
+
+  .menu.active {
+    display: flex;
+  }
+
+  .mega-menu {
+    position: static;
+    flex-direction: column;
+    display: none;
+    background: #222;
+  }
+
+  .mega-menu.active {
+    display: flex;
+  }
+
+  .column a {
+    color: white;
+  }
+
+}
+
+</style>
 </head>
-  </html>
+
+<body>
+
+<header class="header">
+
+  <div class="nav">
+
+    <div class="logo">nxskin</div>
+
+    <button class="menu-toggle">☰</button>
+
+    <ul class="menu">
+
+      <li><a href="#">Home</a></li>
+
+      <!-- MEGA MENU -->
+      <li class="mega-parent">
+        <a href="#">Women</a>
+
+        <div class="mega-menu">
+
+          <div class="column">
+            <h4>Kurtas</h4>
+            <a href="kurta.html">All Kurtas</a>
+            <a href="long-kurta.html">Long Kurta</a>
+          </div>
+
+          <div class="column">
+            <h4>Sets</h4>
+            <a href="2pc.html">2PC Set</a>
+            <a href="3pc.html">3PC Set</a>
+          </div>
+
+          <div class="column">
+            <h4>More</h4>
+            <a href="dupatta.html">Dupatta</a>
+            <a href="bottom.html">Bottomwear</a>
+          </div>
+
+          <div class="column image-col">
+            <img src="banner.jpg" alt="">
+            <p>New Collection</p>
+          </div>
+
+        </div>
+      </li>
+
+      <li><a href="#">Contact</a></li>
+
+    </ul>
+
+  </div>
+
+</header>
+
+<script>
+
+/* MOBILE MENU TOGGLE */
+document.querySelector(".menu-toggle").onclick = function() {
+  document.querySelector(".menu").classList.toggle("active");
+};
+
+/* MOBILE MEGA MENU CLICK */
+document.querySelectorAll(".mega-parent > a").forEach(item => {
+  item.onclick = function(e) {
+
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      this.nextElementSibling.classList.toggle("active");
+    }
+
+  }
+});
+
+</script>
+
+</body>
+</html>
