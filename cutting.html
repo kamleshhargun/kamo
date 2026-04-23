@@ -19,7 +19,76 @@ input, button { width:100%; padding:10px; margin:5px 0; }
 <input id="orderId" placeholder="Order ID">
 <button onclick="save()">Save</button>
 </div>
+<!-- ===== COMMON HEADER + SIDEBAR START ===== -->
 
+<div class="topbar">ERP System</div>
+
+<div class="sidebar">
+  <a href="index.html">Dashboard</a>
+  <a href="pickup.html">Pickup</a>
+  <a href="return.html">Return</a>
+  <a href="lookup.html">Order Lookup</a>
+  <a href="tracking.html">Tracking</a>
+  <a href="purchase.html">Purchase</a>
+  <a href="cutting.html">Cutting</a>
+  <a href="stitching.html">Stitching</a>
+  <a href="finished.html">Finished</a>
+  <a href="sales.html">Sales</a>
+</div>
+
+<!-- ===== COMMON HEADER + SIDEBAR END ===== -->
+  <style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f1f5f9;
+}
+
+/* TOP */
+.topbar {
+  background: #0f172a;
+  color: white;
+  padding: 15px;
+  font-size: 18px;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: #1e293b;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  display: block;
+  color: #cbd5f5;
+  padding: 12px 20px;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background: #334155;
+  color: white;
+}
+
+/* MAIN AREA */
+.main {
+  margin-left: 220px;
+  padding: 20px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+</style>
 <script>
 function save() {
   let order = document.getElementById("orderId").value;
