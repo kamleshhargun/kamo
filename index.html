@@ -1,131 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ERP Dashboard</title>
 
 <style>
-
-/* RESET */
-* {
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   font-family: Arial;
+  background: #f1f5f9;
 }
 
-/* HEADER */
-.header {
-  background: #1f2937;
-  padding: 0 20px;
-}
-
-/* NAVBAR */
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* LOGO */
-.logo {
+/* TOP BAR */
+.topbar {
+  background: #0f172a;
   color: white;
-  font-size: 20px;
-  font-weight: bold;
+  padding: 15px;
+  font-size: 18px;
 }
 
-/* MENU */
-.menu {
-  list-style: none;
-  display: flex;
-}
-
-.menu li {
-  position: relative;
-}
-
-.menu a {
-  color: white;
-  padding: 15px 18px;
-  display: block;
-  text-decoration: none;
-  transition: 0.2s;
-}
-
-.menu a:hover {
-  background: #374151;
-}
-
-/* SUBMENU */
-.submenu {
-  position: absolute;
-  top: 100%;
+/* SIDEBAR */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background: #1e293b;
+  position: fixed;
+  top: 0;
   left: 0;
-  background: white;
-  min-width: 180px;
-
-  display: none;
-  flex-direction: column;
-
-  border-radius: 5px;
-  overflow: hidden;
+  padding-top: 60px;
 }
 
-.submenu a {
-  color: black;
-  padding: 12px;
+.sidebar a {
+  display: block;
+  color: #cbd5f5;
+  padding: 12px 20px;
+  text-decoration: none;
 }
 
-.submenu a:hover {
-  background: #f3f4f6;
-}
-
-/* SHOW SUBMENU */
-.dropdown:hover .submenu {
-  display: flex;
-}
-
-/* MOBILE BUTTON */
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
+.sidebar a:hover {
+  background: #334155;
   color: white;
-  font-size: 22px;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
+/* MAIN */
+.main {
+  margin-left: 220px;
+  padding: 20px;
+}
 
-  .menu-toggle {
-    display: block;
-  }
-
-  .menu {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .menu.active {
-    display: flex;
-  }
-
-  .submenu {
-    position: static;
-    display: none;
-    background: #374151;
-  }
-
-  .submenu a {
-    color: white;
-  }
-
-  .submenu.active {
-    display: flex;
-  }
-
+/* CARDS */
+.card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 </style>
@@ -133,57 +62,32 @@
 
 <body>
 
-<header class="header">
-  <div class="nav">
+<div class="topbar">ERP Dashboard</div>
 
-    <div class="logo">ERP System</div>
+<div class="sidebar">
+  <a href="pickup.html">Pickup</a>
+  <a href="return.html">Return</a>
+  <a href="lookup.html">Order Lookup</a>
+  <a href="tracking.html">Tracking</a>
+  <a href="purchase.html">Purchase</a>
+  <a href="cutting.html">Cutting</a>
+  <a href="stitching.html">Stitching</a>
+  <a href="finished.html">Finished</a>
+  <a href="sales.html">Sales</a>
+</div>
 
-    <button class="menu-toggle">☰</button>
+<div class="main">
 
-    <ul class="menu">
+  <div class="card">📦 Total Orders: <span id="orders">0</span></div>
+  <div class="card">🚚 Pickup Today: <span id="pickup">0</span></div>
+  <div class="card">✅ Finished: <span id="finished">0</span></div>
 
-      <!-- DAILY MENU -->
-      <li class="dropdown">
-        <a href="#">Daily Menu</a>
-
-        <div class="submenu">
-          <a href="pickup.html">Pickup</a>
-          <a href="return.html">Return</a>
-        </div>
-      </li>
-
-      <li><a href="lookup.html">Order Lookup</a></li>
-      <li><a href="tracking.html">Order Tracking</a></li>
-      <li><a href="purchase.html">Purchase</a></li>
-      <li><a href="cutting.html">Cutting</a></li>
-      <li><a href="stitching.html">Stitching</a></li>
-      <li><a href="finished.html">Finished</a></li>
-      <li><a href="sales.html">Sales</a></li>
-
-    </ul>
-
-  </div>
-</header>
+</div>
 
 <script>
-
-/* MOBILE MENU */
-document.querySelector(".menu-toggle").onclick = function() {
-  document.querySelector(".menu").classList.toggle("active");
-};
-
-/* MOBILE SUBMENU */
-document.querySelectorAll(".dropdown > a").forEach(item => {
-  item.onclick = function(e) {
-
-    if (window.innerWidth <= 768) {
-      e.preventDefault();
-      this.nextElementSibling.classList.toggle("active");
-    }
-
-  }
-});
-
+document.getElementById("orders").innerText = localStorage.getItem("orders") || 0;
+document.getElementById("pickup").innerText = localStorage.getItem("pickup") || 0;
+document.getElementById("finished").innerText = localStorage.getItem("finished") || 0;
 </script>
 
 </body>
