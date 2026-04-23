@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finished</title>
+
+<style>
+body { font-family: Arial; background:#f1f5f9; padding:20px; }
+input, button { width:100%; padding:10px; margin:5px 0; }
+.card { background:white; padding:20px; border-radius:10px; }
+</style>
+</head>
+
+<body>
+
+<h2>Finished Goods</h2>
+
+<div class="card">
+<input id="orderId" placeholder="Order ID">
+<button onclick="save()">Save</button>
+</div>
+
+<script>
+function save() {
+  let order = document.getElementById("orderId").value;
+
+  let data = JSON.parse(localStorage.getItem("finished") || "[]");
+  data.push(order);
+
+  localStorage.setItem("finished", JSON.stringify(data));
+
+  alert("Marked Finished");
+}
+</script>
+
+</body>
+</html>
